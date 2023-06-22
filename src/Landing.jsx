@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import bg1 from "./assets/bg1.jpg";
 import bg2 from "./assets/bg2.png";
 import html from "./assets/skill1.png";
@@ -7,11 +8,13 @@ import mysql from "./assets/mysql.png";
 import css from "./assets/css.png";
 import tailwind from "./assets/tailwind.png";
 import bootsrap from "./assets/bootsrap.png";
-import node from "./assets/node.png";
+import project1 from "./assets/project1.png";
 import java from "./assets/java.png";
 import spring from "./assets/spring.png";
+
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Navigation from "./Navigation";
 
 const animationVariants = {
   hidden: {
@@ -131,14 +134,25 @@ function Landing() {
     [0, 1],
     [0, window.innerHeight / 2]
   );
+  const navbarBgColor = useTransform(
+    scrollYProgress,
+    [0, 0.2],
+    ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.7)"]
+  );
   const [ref, inView] = useInView();
   const [refSection1, inViewSection1] = useInView();
   const [refSection2, inViewSection2] = useInView();
   const [refSection3, inViewSection3] = useInView();
 
   return (
-    <div className="bg-black overflow-x-hidden">
+    <div className="bg-primary overflow-x-hidden" id="home">
       <div className="relative h-screen">
+        <motion.div
+          className="fixed top-0 left-0 w-full z-50 bg-transparent"
+          style={{ backgroundColor: navbarBgColor }}
+        >
+          <Navigation />
+        </motion.div>
         <motion.img
           src={bg1}
           alt="Background"
@@ -150,7 +164,7 @@ function Landing() {
         <motion.img
           src={bg2}
           alt="Background"
-          className="absolute top-0 left-0 w-full h-full object-cover z-50"
+          className="absolute top-0 left-0 w-full h-full object-cover z-40"
           style={{
             translateY: translateYImg,
             scale: scaling,
@@ -193,7 +207,10 @@ function Landing() {
         </motion.div>
       </div>
       <main className="bg-black grid gap-10">
-        <motion.section className="text-center grid gap-3 text-white  p-10 mb-10">
+        <motion.section
+          className="text-center grid gap-3 text-white  p-10 mb-10"
+          id="about"
+        >
           <motion.div
             className="mx-auto max-w-5xl"
             ref={refSection1}
@@ -221,12 +238,25 @@ function Landing() {
               passion for pushing the boundaries of web development. Let's
               collaborate and create something amazing together!
             </p>
+            <div className="grid w-full place-items-center my-6">
+              <div className="grid grid-cols-12 w-3/5 gap-3">
+                <button className="rounded-md px-3 py-2 font-semibold text-lg bg-purple-500 text-white col-span-6 w-full hover:bg-purple-700 transition-colors duration-200">
+                  Resume
+                </button>
+                <button className="rounded-md px-3 py-2 font-semibold text-lg bg-purple-500 text-white col-span-6 w-full  hover:bg-purple-700 transition-colors duration-200">
+                  Video Introduction
+                </button>
+              </div>
+            </div>
           </motion.div>
         </motion.section>
-        <h2 className="text-5xl font-bold text-purple-500 text-center w-full">
+        <h2
+          className="text-5xl font-bold text-purple-500 text-center w-full"
+          id="skills"
+        >
           Skills
         </h2>
-        <section className="sm:flex sm:flex-wrap sm:flex-col md:grid md:grid-cols-12 p-5">
+        <section className="sm:flex sm:flex-wrap sm:flex-col md:grid md:grid-cols-12 p-5 ">
           <motion.div
             ref={refSection2}
             initial="hidden"
@@ -305,47 +335,83 @@ function Landing() {
             </motion.div>
           </motion.div>
         </section>
-        <section className="grid grid-cols-12 p-10">
-          <motion.div
-            className="col-span-5"
-            ref={refSection3}
-            initial="hidden"
-            animate={inViewSection3 ? "visible" : "hidden"}
-            variants={leftVariants}
-          >
-            <img
-              src="https://e0.pxfuel.com/wallpapers/887/291/desktop-wallpaper-space-stars-universe-galaxy.jpg"
-              alt="lamborghini"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-          <motion.div
-            className="col-span-7 flex flex-col justify-center items-center text-white p-10"
-            ref={refSection3}
-            initial="hidden"
-            animate={inViewSection3 ? "visible" : "hidden"}
-            variants={rightVariants}
-          >
-            <h2 className="text-3xl my-5 font-medium w-full text-left text-amber-500">
-              Elevate Your Car Buying Experience
-            </h2>
-            <p className="text-justify">
-              Are you tired of the traditional car buying process? Look no
-              further than ABC Car groundbreaking Booking and Bidding Service.
-              Say goodbye to endless dealership visits and haggling over prices.
-              With our service, you can take control of your car purchase like
-              never before. Our innovative booking feature lets you reserve your
-              desired vehicle directly from our platform, ensuringready and
-              waiting for you when you arrive. No more disappointments or wasted
-              time. Andre looking for a great deal, our bidding option allows
-              you to make competitive offers on select vehicles, giving you the
-              opportunity to snag your dream car at an unbeatable price.
-              Experience the future of car buying with ABC Car Booking and
-              Bidding Service and revolutionize the way you shop for your next
-              vehicle.
-            </p>
-          </motion.div>
-        </section>
+        <h2
+          className="text-5xl font-bold text-purple-500 text-center w-full"
+          id="projects"
+        >
+          Projects
+        </h2>
+        <div className="grid place-items-center">
+          <section className="grid grid-cols-12 p-10 border-y-2 max-w-screen-xl">
+            <motion.div
+              className="col-span-5"
+              ref={refSection3}
+              initial="hidden"
+              animate={inViewSection3 ? "visible" : "hidden"}
+              variants={leftVariants}
+            >
+              <img
+                src={project1}
+                alt="lamborghini"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <motion.div
+              className="col-span-7 flex flex-col justify-center items-center text-white p-10"
+              ref={refSection3}
+              initial="hidden"
+              animate={inViewSection3 ? "visible" : "hidden"}
+              variants={rightVariants}
+            >
+              <h2 className="text-3xl my-5 font-medium w-full text-left text-purple-500">
+                ABC Cars Portal
+              </h2>
+              <p className="text-justify">
+                A web application that connects buyers and sellers of used cars,
+                providing users a seamless platform to browse a wide variety of
+                used cars and easily place bids or book test drives. With a
+                dedicated administration panel, the application ensures
+                efficient management of user and car data, ensuring a smooth and
+                secure transaction process for all parties involved.
+              </p>
+              <div className="grid grid-cols-12 w-3/4 gap-3 my-3">
+                <a
+                  href="https://github.com/aguswirayasa/ABC-Cars-Portal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-zinc-800 rounded-md px-3 py-2 hover:bg-purple-800 hover:scale-105 transition-all col-span-6 duration-300 flex gap-1 justify-center justify-items-center "
+                >
+                  <button className="flex gap-1 justify-center justify-items-center ">
+                    <p className="text-lg font-semibold">Github</p>
+                    <svg
+                      enableBackground="new 0 0 512 512"
+                      height="30px"
+                      id="Layer_1"
+                      version="1.1"
+                      viewBox="0 0 512 512"
+                      width="30px"
+                      xmlSpace="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                    >
+                      <g>
+                        <path
+                          clipRule="evenodd"
+                          d="M296.133,354.174c49.885-5.891,102.942-24.029,102.942-110.192   c0-24.49-8.624-44.448-22.67-59.869c2.266-5.89,9.515-28.114-2.734-58.947c0,0-18.139-5.898-60.759,22.669   c-18.139-4.983-38.09-8.163-56.682-8.163c-19.053,0-39.011,3.18-56.697,8.163c-43.082-28.567-61.22-22.669-61.22-22.669   c-12.241,30.833-4.983,53.057-2.718,58.947c-14.061,15.42-22.677,35.379-22.677,59.869c0,86.163,53.057,104.301,102.942,110.192   c-6.344,5.452-12.241,15.873-14.507,30.387c-12.702,5.438-45.808,15.873-65.758-18.592c0,0-11.795-21.31-34.012-22.669   c0,0-22.224-0.453-1.813,13.592c0,0,14.96,6.812,24.943,32.653c0,0,13.6,43.089,76.179,29.48v38.543   c0,5.906-4.53,12.702-15.865,10.89C96.139,438.977,32.2,354.626,32.2,255.77c0-123.807,100.216-224.022,224.03-224.022   c123.347,0,224.023,100.216,223.57,224.022c0,98.856-63.946,182.754-152.828,212.688c-11.342,2.266-15.873-4.53-15.873-10.89   V395.45C311.1,374.577,304.288,360.985,296.133,354.174L296.133,354.174z M512,256.23C512,114.73,397.263,0,256.23,0   C114.73,0,0,114.73,0,256.23C0,397.263,114.73,512,256.23,512C397.263,512,512,397.263,512,256.23L512,256.23z"
+                          fill="#ffffff"
+                          fillRule="evenodd"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </a>
+                <button className="flex bg-zinc-800 rounded-md px-3 py-2 col-span-6 justify-center hover:bg-purple-800 hover:scale-105 transition-all duration-300">
+                  <p className="text-lg font-semibold">Demo</p>
+                </button>
+              </div>
+            </motion.div>
+          </section>
+        </div>
       </main>
     </div>
   );
