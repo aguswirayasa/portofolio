@@ -11,11 +11,13 @@ import bootsrap from "./assets/bootsrap.png";
 import project1 from "./assets/project1.png";
 import java from "./assets/java.png";
 import spring from "./assets/spring.png";
-
+import project2 from "./assets/project2.png";
+import project3 from "./assets/project3.png";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navigation from "./Navigation";
 import ContactMe from "./ContactMe";
+import Footer from "./Footer";
 
 const animationVariants = {
   hidden: {
@@ -71,16 +73,16 @@ const Projects = [
     github: "https://github.com/aguswirayasa/ABC-Cars-Portal",
   },
   {
-    name: "ABC Cars Portal",
-    image: project1,
-    desc: "A web application that connects buyers and sellers of used cars, providing users a seamless platform to browse a wide variety of used cars and easily place bids or book test drives. With a dedicated administration panel, the application ensures efficient management of user and car data, ensuring a smooth and secure transaction process for all parties involved.",
-    github: "https://github.com/aguswirayasa/ABC-Cars-Portal",
+    name: "Know Your Neighborhood",
+    image: project2,
+    desc: "A web application that allow user to get information about local store on their neighborhood. Key feature of this application is social login option that allow user to access the site by simply using their facerbook or google without the need of registering an account, this is done with the help of OAuth2.",
+    github: "https://github.com/aguswirayasa/kyn",
   },
   {
-    name: "ABC Cars Portal",
-    image: project1,
-    desc: "A web application that connects buyers and sellers of used cars, providing users a seamless platform to browse a wide variety of used cars and easily place bids or book test drives. With a dedicated administration panel, the application ensures efficient management of user and car data, ensuring a smooth and secure transaction process for all parties involved.",
-    github: "https://github.com/aguswirayasa/ABC-Cars-Portal",
+    name: "ABC Jobs Portal",
+    image: project3,
+    desc: "A web application that allow users to find jobs and make connection. On this application users can register and login to the website, search another user, edit profile, change password. The application also includes administration that has authority to manage the user data.",
+    github: "https://github.com/aguswirayasa/ABC-Jobs-Portal",
   },
 ];
 
@@ -172,7 +174,7 @@ function Landing() {
   const [contact, inContact] = useInView();
 
   return (
-    <div className="bg-primary overflow-x-hidden" id="home">
+    <div className="bg-slate-950 overflow-x-hidden" id="home">
       <div className="relative h-screen">
         <motion.div
           className="fixed top-0 left-0 w-full z-50 bg-transparent"
@@ -273,10 +275,10 @@ function Landing() {
             </p>
             <div className="grid w-full place-items-center my-6" ref={about}>
               <div className="grid grid-cols-12 w-3/5 gap-3">
-                <button className="rounded-md px-3 py-2 font-semibold text-lg bg-purple-500 text-white col-span-6 w-full hover:bg-purple-700 transition-colors duration-200">
+                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 text-white col-span-6 w-full hover:bg-purple-700 transition-colors duration-200">
                   Resume
                 </button>
-                <button className="rounded-md px-3 py-2 font-semibold text-lg bg-purple-500 text-white col-span-6 w-full  hover:bg-purple-700 transition-colors duration-200">
+                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 text-white col-span-6 w-full  hover:bg-purple-700 transition-colors duration-200">
                   Video Introduction
                 </button>
               </div>
@@ -388,14 +390,14 @@ function Landing() {
               className="grid grid-cols-12 p-10 border-y-2 max-w-screen-xl"
               key={index}
             >
-              <motion.div className="col-span-5">
+              <motion.div className="xs:col-span-12 md:col-span-5">
                 <img
                   src={project.image}
                   alt=""
                   className="w-full h-full object-cover"
                 />
               </motion.div>
-              <motion.div className="col-span-7 flex flex-col justify-center items-center text-white p-10">
+              <motion.div className="xs:col-span-12 md:col-span-7 flex flex-col justify-center items-center text-white p-10">
                 <h2 className="text-3xl my-5 font-medium w-full text-left text-purple-500">
                   {project.name}
                 </h2>
@@ -405,7 +407,7 @@ function Landing() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-zinc-800 rounded-md px-3 py-2 hover:bg-purple-800 hover:scale-105 transition-all col-span-6 duration-300 flex gap-1 justify-center justify-items-center "
+                    className="bg-purple-800 rounded-md px-3 py-2 hover:bg-purple-900 hover:scale-105 transition-all col-span-12 duration-300 flex gap-1 justify-center justify-items-center "
                   >
                     <button className="flex gap-1 justify-center justify-items-center ">
                       <p className="text-lg font-semibold">Github</p>
@@ -431,18 +433,15 @@ function Landing() {
                       </svg>
                     </button>
                   </a>
-                  <button className="flex bg-zinc-800 rounded-md px-3 py-2 col-span-6 justify-center hover:bg-purple-800 hover:scale-105 transition-all duration-300">
-                    <p className="text-lg font-semibold">Demo</p>
-                  </button>
                 </div>
               </motion.div>
             </section>
           ))}
         </motion.div>
         <div className="grid place-items-center">
-          <section className="grid grid-cols-12 p-10 border-y-2 w-3/4">
+          <section className="grid grid-cols-12 p-10  w-3/4 xs:gap-3">
             <motion.div
-              className="col-span-6"
+              className="xs:col-span-12 md:col-span-6"
               ref={refSection4}
               initial="hidden"
               animate={inViewSection4 ? "visible" : "hidden"}
@@ -491,7 +490,7 @@ function Landing() {
               </span>
             </motion.div>
             <motion.div
-              className="col-span-6  text-white "
+              className="xs:col-span-12 md:col-span-6  text-white "
               ref={refSection4}
               initial="hidden"
               animate={inViewSection4 ? "visible" : "hidden"}
@@ -502,6 +501,7 @@ function Landing() {
           </section>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
