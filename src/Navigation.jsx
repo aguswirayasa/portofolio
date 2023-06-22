@@ -1,5 +1,5 @@
 import logo from "./assets/logo.png";
-const Navigation = () => {
+const Navigation = ({ home, about, skill, project, contact }) => {
   return (
     <nav className=" bg-opacity-80 py-4 transition-all duration-300">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -34,7 +34,9 @@ const Navigation = () => {
             <li>
               <a
                 href="#home"
-                className="block py-2 pl-3 pr-4  border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 transition-colors duration-200"
+                className={`block py-2 pl-3 pr-4 ${
+                  home && "text-purple-500"
+                } border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 transition-colors duration-200`}
               >
                 Home
               </a>
@@ -42,7 +44,9 @@ const Navigation = () => {
             <li>
               <a
                 href="#about"
-                className="block py-2 pl-3 pr-4  border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0"
+                className={`block py-2 pl-3 pr-4 ${
+                  about && "text-purple-500"
+                } border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 transition-colors duration-200`}
               >
                 About Me
               </a>
@@ -50,23 +54,29 @@ const Navigation = () => {
             <li>
               <a
                 href="#skills"
-                className="block py-2 pl-3 pr-4  border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 e  "
+                className={`block py-2 pl-3 pr-4 ${
+                  skill && "text-purple-500"
+                } border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 transition-colors duration-200`}
               >
                 Skills
               </a>
             </li>
             <li>
               <a
-                href="#"
-                className="block py-2 pl-3 pr-4  border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0   "
+                href="#projects"
+                className={`block py-2 pl-3 pr-4 ${
+                  project && "text-purple-500"
+                } border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 transition-colors duration-200`}
               >
                 Projects
               </a>
             </li>
             <li>
               <a
-                href="#"
-                className="block py-2 pl-3 pr-4  border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 "
+                href="#contact"
+                className={`block py-2 pl-3 pr-4 ${
+                  contact && "text-purple-500"
+                } border-b-4 border-transparent rounded md:bg-transparent md:hover:border-purple-700 md:p-0 transition-colors duration-200`}
               >
                 Contacts
               </a>
