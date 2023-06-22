@@ -177,7 +177,7 @@ function Landing() {
     <div className="bg-slate-950 overflow-x-hidden" id="home">
       <div className="relative h-screen">
         <motion.div
-          className="fixed top-0 left-0 w-full z-50 bg-transparent"
+          className="fixed top-0 left-0 w-full z-50 bg-transparent h-fit"
           style={{ backgroundColor: navbarBgColor }}
         >
           <Navigation

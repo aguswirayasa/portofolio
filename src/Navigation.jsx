@@ -36,7 +36,7 @@ const Navigation = ({ home, about, skill, project, contact }) => {
 
   return (
     <nav className="bg-opacity-80 py-4 transition-all duration-300">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xs:p-0 md:p-4">
+      <div className="max-w-screen-xl h-20 flex flex-wrap items-center justify-between mx-auto xs:p-0 md:p-4">
         <Link
           to="home"
           spy={true}
