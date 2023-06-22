@@ -71,18 +71,53 @@ const Projects = [
     image: project1,
     desc: "A web application that connects buyers and sellers of used cars, providing users a seamless platform to browse a wide variety of used cars and easily place bids or book test drives. With a dedicated administration panel, the application ensures efficient management of user and car data, ensuring a smooth and secure transaction process for all parties involved.",
     github: "https://github.com/aguswirayasa/ABC-Cars-Portal",
+    techs: [
+      {
+        name: "springboot",
+        image: spring,
+      },
+      { name: "MySql", image: mysql },
+      { name: "java", image: java },
+      { name: "javascript", image: js },
+      { name: "tailwind", image: tailwind },
+      { name: "boostrap", image: bootsrap },
+      { name: "CSS", image: css },
+    ],
   },
   {
     name: "Know Your Neighborhood",
     image: project2,
     desc: "A web application that allow user to get information about local store on their neighborhood. Key feature of this application is social login option that allow user to access the site by simply using their facerbook or google without the need of registering an account, this is done with the help of OAuth2.",
     github: "https://github.com/aguswirayasa/kyn",
+    techs: [
+      {
+        name: "springboot",
+        image: spring,
+      },
+      { name: "MySql", image: mysql },
+      { name: "java", image: java },
+      { name: "react", image: react },
+      { name: "javascript", image: js },
+      { name: "tailwind", image: tailwind },
+    ],
   },
   {
     name: "ABC Jobs Portal",
     image: project3,
     desc: "A web application that allow users to find jobs and make connection. On this application users can register and login to the website, search another user, edit profile, change password. The application also includes administration that has authority to manage the user data.",
     github: "https://github.com/aguswirayasa/ABC-Jobs-Portal",
+    techs: [
+      {
+        name: "spring MVC",
+        image: spring,
+      },
+      { name: "MySql", image: mysql },
+      { name: "java", image: java },
+      { name: "javascript", image: js },
+
+      { name: "boostrap", image: bootsrap },
+      { name: "CSS", image: css },
+    ],
   },
 ];
 
@@ -275,10 +310,10 @@ function Landing() {
             </p>
             <div className="grid w-full place-items-center my-6" ref={about}>
               <div className="grid grid-cols-12 w-3/5 gap-3">
-                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 text-white col-span-6 w-full hover:bg-purple-700 transition-colors duration-200">
+                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 text-white col-span-6 w-full hover:bg-purple-700 transition-all duration-200">
                   Resume
                 </button>
-                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 text-white col-span-6 w-full  hover:bg-purple-700 transition-colors duration-200">
+                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 text-white col-span-6 w-full  hover:bg-purple-700 transition-all duration-200">
                   Video Introduction
                 </button>
               </div>
@@ -323,6 +358,7 @@ function Landing() {
                     src={skill.icon}
                     alt={skill.name}
                     className="object-contain xs:h-8 sm:h-16 md:h-32 lg:w-40"
+                    loading="lazy"
                   />
                   <p className="text-white font-semibold xs:text-sm text-center md:text-lg">
                     {skill.name}
@@ -362,6 +398,7 @@ function Landing() {
                     src={skill.icon}
                     alt={skill.name}
                     className="object-contain xs:h-8 sm:h-16 md:h-32 lg:w-40"
+                    loading="lazy"
                   />
                   <p className="text-white font-semibold xs:text-sm text-center md:text-lg">
                     {skill.name}
@@ -395,6 +432,7 @@ function Landing() {
                   src={project.image}
                   alt=""
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </motion.div>
               <motion.div className="xs:col-span-12 md:col-span-7 flex flex-col justify-center items-center text-white p-10">
@@ -402,12 +440,28 @@ function Landing() {
                   {project.name}
                 </h2>
                 <p className="text-justify">{project.desc}</p>
+                <div className="flex w-full flex-wrap p-3 gap-2">
+                  {project.techs.map((tech, index) => (
+                    <span
+                      className=" border-2 border-purple-500   font-semibold p-3 rounded-xl flex justify-center items-center gap-2 capitalize"
+                      key={index}
+                    >
+                      <img
+                        src={tech.image}
+                        alt={tech.name}
+                        className="h-9 w-9 object-contain"
+                        loading="lazy"
+                      />
+                      <p className="font-semibold text-lg">{tech.name}</p>
+                    </span>
+                  ))}
+                </div>
                 <div className="grid grid-cols-12 w-3/4 gap-3 my-3">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-purple-800 rounded-md px-3 py-2 hover:bg-purple-900 hover:scale-105 transition-all col-span-12 duration-300 flex gap-1 justify-center justify-items-center "
+                    className="bg-purple-500 shadow-lg shadow-purple-500/50 rounded-md px-3 py-2 hover:bg-purple-700 hover:scale-105 transition-all col-span-12 duration-300 flex gap-1 justify-center justify-items-center "
                   >
                     <button className="flex gap-1 justify-center justify-items-center ">
                       <p className="text-lg font-semibold">Github</p>
