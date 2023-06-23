@@ -119,7 +119,8 @@ const Footer = () => {
           <div className="flex flex-wrap">
             <div className="w-full md:w-1/2">
               <p className="text-sm">
-                &copy; 2023 Gede Agus Wirayasa. All rights reserved.
+                Powered by React and Vite. &copy; 2023 Gede Agus Wirayasa. All
+                rights reserved.
               </p>
             </div>
             <div className="w-full md:w-1/2">

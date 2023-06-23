@@ -1,23 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import bg1 from "./assets/bg1.jpg";
 import bg2 from "./assets/bg2.png";
-import html from "./assets/skill1.png";
-import js from "./assets/js.png";
-import react from "./assets/react.png";
-import mysql from "./assets/mysql.png";
-import css from "./assets/css.png";
-import tailwind from "./assets/tailwind.png";
-import bootsrap from "./assets/bootsrap.png";
-import project1 from "./assets/project1.png";
-import java from "./assets/java.png";
-import spring from "./assets/spring.png";
-import project2 from "./assets/project2.png";
-import project3 from "./assets/project3.png";
+import phone from "./assets/phone.png";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navigation from "./Navigation";
 import ContactMe from "./ContactMe";
 import Footer from "./Footer";
+import icon from "./assets/icon.png";
+import { education } from "./data/education";
+import { Projects } from "./data/projects";
+import { frontEndSkills, BackEndSkills } from "./data/skills";
 
 const animationVariants = {
   hidden: {
@@ -47,79 +40,6 @@ const sectionVariants = {
     },
   },
 };
-const frontEndSkills = [
-  { name: "HTML", icon: html },
-  { name: "CSS", icon: css },
-  { name: "JavaScript", icon: js },
-  { name: "React Js", icon: react },
-  { name: "Tailwind CSS", icon: tailwind },
-  { name: "Bootsrap", icon: bootsrap },
-
-  // Add more skills and icons as needed
-];
-const BackEndSkills = [
-  { name: "SpringBoot", icon: spring },
-  { name: "Mysql", icon: mysql },
-  { name: "Java", icon: java },
-
-  // Add more skills and icons as needed
-];
-
-const Projects = [
-  {
-    name: "ABC Cars Portal",
-    image: project1,
-    desc: "A web application that connects buyers and sellers of used cars, providing users a seamless platform to browse a wide variety of used cars and easily place bids or book test drives. With a dedicated administration panel, the application ensures efficient management of user and car data, ensuring a smooth and secure transaction process for all parties involved.",
-    github: "https://github.com/aguswirayasa/ABC-Cars-Portal",
-    techs: [
-      {
-        name: "springboot",
-        image: spring,
-      },
-      { name: "MySql", image: mysql },
-      { name: "java", image: java },
-      { name: "javascript", image: js },
-      { name: "tailwind", image: tailwind },
-      { name: "boostrap", image: bootsrap },
-      { name: "CSS", image: css },
-    ],
-  },
-  {
-    name: "Know Your Neighborhood",
-    image: project2,
-    desc: "A web application that allow user to get information about local store on their neighborhood. Key feature of this application is social login option that allow user to access the site by simply using their facerbook or google without the need of registering an account, this is done with the help of OAuth2.",
-    github: "https://github.com/aguswirayasa/kyn",
-    techs: [
-      {
-        name: "springboot",
-        image: spring,
-      },
-      { name: "MySql", image: mysql },
-      { name: "java", image: java },
-      { name: "react", image: react },
-      { name: "javascript", image: js },
-      { name: "tailwind", image: tailwind },
-    ],
-  },
-  {
-    name: "ABC Jobs Portal",
-    image: project3,
-    desc: "A web application that allow users to find jobs and make connection. On this application users can register and login to the website, search another user, edit profile, change password. The application also includes administration that has authority to manage the user data.",
-    github: "https://github.com/aguswirayasa/ABC-Jobs-Portal",
-    techs: [
-      {
-        name: "spring MVC",
-        image: spring,
-      },
-      { name: "MySql", image: mysql },
-      { name: "java", image: java },
-      { name: "javascript", image: js },
-
-      { name: "boostrap", image: bootsrap },
-      { name: "CSS", image: css },
-    ],
-  },
-];
 
 const leftVariants = {
   hidden: {
@@ -308,12 +228,34 @@ function Landing() {
               passion for pushing the boundaries of web development. Let's
               collaborate and create something amazing together!
             </p>
-            <div className="grid w-full place-items-center my-6" ref={about}>
+            <div className="text-left my-6" ref={about}>
+              <h2 className="font-bold text-4xl text-purple-500  border-b-2 pb-3 border-purple-400">
+                Education
+              </h2>
+              {education.map((ed, index) => (
+                <div
+                  className="grid place-content-start border-b-2 p-3 border-purple-400"
+                  key={index}
+                >
+                  <span className="flex justify-start items-center">
+                    <img src={icon} alt="x" className="h-7" />
+
+                    <h3 className="text-xl  font-bold">{ed.school}</h3>
+                  </span>
+                  <ul className=" px-7">
+                    <li className="text-lg">{ed.location}</li>
+                    <li className="text-lg">{ed.date}</li>
+                    <li className="text-lg">{ed.major}</li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="grid w-full place-items-center my-8">
               <div className="grid grid-cols-12 w-3/5 gap-3">
-                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 text-white col-span-6 w-full hover:bg-purple-700 transition-all duration-200">
+                <button className="xs:col-span-12 md:col-span-6 rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 text-white col-span-6 w-full hover:bg-purple-700 transition-all duration-200">
                   Resume
                 </button>
-                <button className="rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 text-white col-span-6 w-full  hover:bg-purple-700 transition-all duration-200">
+                <button className="xs:col-span-12 md:col-span-6 rounded-md px-3 py-2 font-semibold xs:text-base md:text-lg bg-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 text-white col-span-6 w-full  hover:bg-purple-700 transition-all duration-200">
                   Video Introduction
                 </button>
               </div>
@@ -338,7 +280,7 @@ function Landing() {
               Front End
             </h2>
             <motion.div
-              className="flex flex-wrap-reverse flex-1 gap-3 justify-center"
+              className="flex flex-wrap flex-1 gap-3 justify-center"
               variants={{
                 visible: {
                   transition: { staggerChildren: 0.2 }, // Add staggerChildren with delay between each item
@@ -504,7 +446,7 @@ function Landing() {
               <h2 className="font-bold text-5xl text-purple-500 my-3">
                 Let's keep in touch!
               </h2>
-              <span className="flex gap-1 items-center justify-center w-fit">
+              <span className="flex gap-1 items-center justify-center w-fit mb-3">
                 <div className=" w-fit p-2 rounded-md bg-zinc-800">
                   <svg
                     className=""
@@ -540,6 +482,18 @@ function Landing() {
                   id="contact"
                 >
                   aguswirayasa@gmail.com
+                </p>
+              </span>
+              <span className="flex gap-1 items-center justify-center w-fit">
+                <div className=" w-fit p-2 rounded-md bg-zinc-800">
+                  <img src={phone} alt="" />
+                </div>
+                <p
+                  className="font-semibold text-xl text-white"
+                  ref={contact}
+                  id="contact"
+                >
+                  +62 821 4457 1746
                 </p>
               </span>
             </motion.div>
