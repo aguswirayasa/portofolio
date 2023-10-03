@@ -370,7 +370,7 @@ function Landing() {
                     </span>
                   ))}
                 </div>
-                <div className="grid grid-cols-12 w-3/4 gap-3 my-3">
+                <div className="grid grid-cols-12 w-full md:w-3/4 gap-3 my-3">
                   <a
                     href={project.github}
                     target="_blank"
