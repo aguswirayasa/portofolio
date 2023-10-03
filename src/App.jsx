@@ -1,11 +1,11 @@
 import "./App.css";
 import Landing from "./Landing";
-import { Analytics } from "@vercel/analytics/react";
+import { inject } from "@vercel/analytics";
 function App() {
+  inject();
   return (
     <>
       <Landing />
-      <Analytics />
     </>
   );
 }
