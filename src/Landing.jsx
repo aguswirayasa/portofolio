@@ -10,7 +10,7 @@ import Footer from "./Footer";
 import icon from "./assets/icon.png";
 import { education } from "./data/education";
 import { Projects } from "./data/projects";
-import { frontEndSkills, BackEndSkills } from "./data/skills";
+import { skillAndTech } from "./data/skills";
 
 const animationVariants = {
   hidden: {
@@ -85,21 +85,6 @@ const leftSkillVariants = {
   },
 };
 
-const rightSkillVariants = {
-  hidden: {
-    opacity: 0,
-
-    y: -70,
-  },
-  visible: {
-    opacity: 1,
-
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
 function Landing() {
   const { scrollYProgress } = useViewportScroll();
   const translateYImg = useTransform(
@@ -278,21 +263,19 @@ function Landing() {
           className="text-5xl font-bold text-purple-500 text-center w-full"
           id="skills"
         >
-          Skills
+          Skills and Technologies
         </h2>
-        <section className="sm:flex sm:flex-wrap sm:flex-col md:grid md:grid-cols-12 p-5 ">
+        <section className="flex flex-wrap flex-col p-5 ">
           <motion.div
             ref={refSection2}
             initial="hidden"
             animate={inViewSection2 ? "visible" : "hidden"}
             variants={leftVariants}
-            className="text-white p-10 sm:col-span-12 md:col-span-6"
+            className="text-white p-10 "
           >
-            <h2 className="text-4xl my-5 font-bold border-b-4 border-purple-400 w-full pb-3 text-center text-purple-500">
-              Front End
-            </h2>
+            <span className=" my-5 border-b-4 border-purple-400 w-full pb-3 text-center text-purple-500"></span>
             <motion.div
-              className="flex flex-wrap flex-1 gap-3 justify-center"
+              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 place-items-center gap-3"
               variants={{
                 visible: {
                   transition: { staggerChildren: 0.2 }, // Add staggerChildren with delay between each item
@@ -302,10 +285,10 @@ function Landing() {
               initial="hidden"
               animate={inViewSection2 ? "visible" : "hidden"}
             >
-              {frontEndSkills.map((skill, index) => (
+              {skillAndTech.map((skill, index) => (
                 <motion.div
                   key={index}
-                  className="border-4 border-purple-500 bg-purple-500/30 text-white flex flex-col items-center justify-center rounded-lg xs:w-20 sm:w-28 md:w-40 lg:w-48 p-3 shadow-inner shadow-purple-400"
+                  className="border-4 border-purple-500 bg-purple-500/30 text-white col-span-1 flex flex-col items-center justify-center rounded-lg w-full  p-3 shadow-inner shadow-purple-400"
                   variants={leftSkillVariants}
                 >
                   <img
@@ -314,47 +297,7 @@ function Landing() {
                     className="object-contain xs:h-8 sm:h-16 md:h-32 lg:w-40"
                     loading="lazy"
                   />
-                  <p className="text-white font-semibold xs:text-sm text-center md:text-lg">
-                    {skill.name}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            ref={refSection2}
-            initial="hidden"
-            animate={inViewSection2 ? "visible" : "hidden"}
-            variants={leftVariants}
-            className="text-white p-10 sm:col-span-12 md:col-span-6"
-          >
-            <h2 className="text-4xl my-5 font-bold border-b-4 border-purple-400 w-full pb-3 text-center text-purple-500">
-              Back End
-            </h2>
-            <motion.div
-              className="flex flex-wrap flex-1 gap-3 justify-center"
-              variants={{
-                visible: {
-                  transition: { staggerChildren: 0.4 }, // Add staggerChildren with delay between each item
-                },
-              }}
-              initial="hidden"
-              animate={inViewSection2 ? "visible" : "hidden"}
-            >
-              {BackEndSkills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  className="border-4 border-purple-500 bg-purple-500/30 text-white flex flex-col items-center justify-center rounded-lg xs:w-20 sm:w-28 md:w-40 lg:w-48 p-3 shadow-inner shadow-purple-400"
-                  variants={rightSkillVariants}
-                >
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className="object-contain xs:h-8 sm:h-16 md:h-32 lg:w-40"
-                    loading="lazy"
-                  />
-                  <p className="text-white font-semibold xs:text-sm text-center md:text-lg">
+                  <p className="text-white font-semibold text-xs text-center md:text-lg">
                     {skill.name}
                   </p>
                 </motion.div>
@@ -385,7 +328,7 @@ function Landing() {
                 <img
                   src={project.image}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   loading="lazy"
                 />
               </motion.div>
@@ -394,19 +337,36 @@ function Landing() {
                   {project.name}
                 </h2>
                 <p className="text-justify">{project.desc}</p>
+                {project.demoAccount && (
+                  <div className="self-start">
+                    <h3 className="font-bold text-lg my-3">Demo Account</h3>
+                    {project.demoAccount.map((account, index) => (
+                      <div key={index}>
+                        <ul className="my-3">
+                          <li className="font-semibold text-lg">
+                            {account.role}
+                          </li>
+                          <li className="">Email: {account.email}</li>
+                          <li className="">Password: {account.password}</li>
+                        </ul>
+                      </div>
+                    ))}
+                    <p>
+                      {project.demoInformation.title}:{" "}
+                      {project.demoInformation.value}
+                    </p>
+                  </div>
+                )}
+
                 <div className="flex w-full flex-wrap p-3 gap-2">
                   {project.techs.map((tech, index) => (
                     <span
-                      className=" border-2 border-purple-500   font-semibold p-3 rounded-xl flex justify-center items-center gap-2 capitalize"
+                      className=" border-2 border-black  bg-purple-900 text-white  p-3  rounded-xl flex justify-center items-center gap-2 capitalize"
                       key={index}
                     >
-                      <img
-                        src={tech.image}
-                        alt={tech.name}
-                        className="h-9 w-9 object-contain"
-                        loading="lazy"
-                      />
-                      <p className="font-semibold text-lg">{tech.name}</p>
+                      <p className="font-black text-sm md:text-lg">
+                        #{tech.name}
+                      </p>
                     </span>
                   ))}
                 </div>
@@ -415,7 +375,9 @@ function Landing() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-purple-500 shadow-lg shadow-purple-500/50 rounded-md px-3 py-2 hover:bg-purple-700 hover:scale-105 transition-all col-span-12 duration-300 flex gap-1 justify-center justify-items-center "
+                    className={`bg-purple-500 shadow-lg shadow-purple-500/50 rounded-md px-3 py-2 hover:bg-purple-700 hover:scale-105 transition-all ${
+                      project.demo ? "col-span-6" : "col-span-12"
+                    } duration-300 flex gap-1 justify-center justify-items-center`}
                   >
                     <button className="flex gap-1 justify-center justify-items-center ">
                       <p className="text-lg font-semibold">Github</p>
@@ -441,6 +403,20 @@ function Landing() {
                       </svg>
                     </button>
                   </a>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`bg-purple-500 shadow-lg shadow-purple-500/50 rounded-md px-3 py-2 hover:bg-purple-700 hover:scale-105 transition-all ${
+                        project.demo ? "col-span-6" : "col-span-12"
+                      } duration-300 flex gap-1 justify-center justify-items-center`}
+                    >
+                      <button className="flex gap-1 justify-center justify-items-center ">
+                        <p className="text-lg font-semibold">Demo</p>
+                      </button>
+                    </a>
+                  )}
                 </div>
               </motion.div>
             </section>
